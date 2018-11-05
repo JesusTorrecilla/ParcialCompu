@@ -1,0 +1,2 @@
+Pregunta 1: tail -f /v+r/log/+p+che2/error.log
+Pregunta 3: git clone
