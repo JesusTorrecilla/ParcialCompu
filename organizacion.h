@@ -15,7 +15,8 @@ class Organizacion
 
         void agregar();
         void listar();
-	void listar2();
+	    void listar2();
+        void listar3();
         void eliminar(string);
         void inicio();
         void setNombre(string);

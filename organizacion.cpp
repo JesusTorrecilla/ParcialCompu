@@ -55,6 +55,17 @@ void Organizacion::inicio(){
     cout << "</tr>" << endl;
     cout << "</tr></tbody>" << endl;
     cout << "</table>" << endl;
+        cout << "<br><h3>Personas por organizacion</h3><br>" << endl;
+    cout << "<table class='table table-hover table-bordered  table-striped' cellpadding='0' cellspacing='0'>" << endl;
+    cout << "<thead><tr>" << endl;
+    cout << "<th >Nombre</th>"<< endl;
+    cout << "<th >Personas</th>"<< endl;
+    cout << "</tr></thead>" << endl;
+    cout << "<tbody><tr>" << endl;
+    this->listar3();
+    cout << "</tr>" << endl;
+    cout << "</tr></tbody>" << endl;
+    cout << "</table>" << endl;
     cout<<"<div class='centrar'><h2>Agregar Organizacion</h2></div>"<<endl;
     cout<<"<form class='form-signin'  method='post'>"<<endl;
     cout<<"<label for='org' class='sr-only'>Organizacion</label>"<<endl;
@@ -111,10 +122,32 @@ void Organizacion::listar2()
     }
 }
 
+void Organizacion::listar3()
+{
+    MyConnection myconnection;
+    myconnection.connect();
+    sql::ResultSet* personas_organizaciones = myconnection.query("SELECT persona.idorganizacion, count(*) as contador, organizacion.id as id_organizacion, organizacion.nombre as nombre_organizacion FROM persona INNER JOIN organizacion ON persona.idorganizacion = organizacion.id group by idorganizacion");
+
+    while (personas_organizaciones->next()) {
+    cout << "<tr>" << endl;
+      cout << "<td>" << endl;
+      cout << personas_organizaciones->getString("nombre_organizacion") << endl;
+      cout << "</td>" << endl;
+      cout << "<td>" << endl;
+      cout << personas_organizaciones->getString("contador") << endl;
+      cout << "</td>" << endl;
+      cout << "<td>" << endl;
+      cout << "<a href='P2?eliminar_organizacion=" + personas_organizaciones->getString("id_organizacion") + "'" << endl;
+      cout << ">Eliminar</a>"<<endl;
+      cout << "</td>" << endl;
+      cout << "</tr>" << endl;
+    }
+}
+
 
 void Organizacion::eliminar(string id){
     string stringSQL;
-    stringSQL = "DELETE FROM persona WHERE id='"+id+"'";
+    stringSQL = "DELETE FROM organizacion WHERE id='"+id+"'";
     MyConnection::instance()->execute(stringSQL);
 }
 
