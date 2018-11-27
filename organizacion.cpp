@@ -137,7 +137,7 @@ void Organizacion::listar3()
       cout << personas_organizaciones->getString("contador") << endl;
       cout << "</td>" << endl;
       cout << "<td>" << endl;
-      cout << "<a href='P2?eliminar_organizacion=" + personas_organizaciones->getString("id_organizacion") + "'" << endl;
+      cout << "<a href='2Parcial?ideliminar=" + personas_organizaciones->getString("id_organizacion") + "'" << endl;
       cout << ">Eliminar</a>"<<endl;
       cout << "</td>" << endl;
       cout << "</tr>" << endl;

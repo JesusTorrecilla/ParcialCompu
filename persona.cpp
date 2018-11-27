@@ -22,7 +22,7 @@ void Persona::agregar()
 {
     string stringSQL;
     stringstream values;
-    values << this->getDni() << "','" << this->getNombre() << "','" << this->getApellido() << "','" << '1';
+    values << this->getDni() << "','" << this->getNombre() << "','" << this->getApellido() << "','" << '2';
     stringSQL = "INSERT INTO persona (dni,nombre,apellido,idorganizacion) VALUES ('"+values.str()+"');";
     MyConnection::instance()->execute(stringSQL);
     this->inicio();
@@ -51,7 +51,7 @@ void Persona::inicio(){
     cout<<"<label for='nombre' class='sr-only'>Nombre</label>"<<endl;
     cout<<"<input type='text' id='nombre' name='nombre' class='form-control' placeholder='Nombre' required autofocus>"<<endl;
     cout<<"<label for='apellido' class='sr-only'>Apellido</label>"<<endl;
-    cout<<"<input type='text' id='nombre' name='nombre' class='form-control' placeholder='Nombre' required autofocus>"<<endl;
+    cout<<"<input type='text' id='apellido' name='apellido' class='form-control' placeholder='Nombre' required autofocus>"<<endl;
     cout<<"<label for='dni' class='sr-only'>Dni</label>"<<endl;
     cout<<"<input type='text' id='dni' name='dni' class='form-control' placeholder='Dni' required>"<<endl;
     cout<<"<button class='btn btn-lg btn-primary btn-block' type='submit'>Enviar</button>"<<endl;
